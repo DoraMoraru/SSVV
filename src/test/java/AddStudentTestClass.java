@@ -121,8 +121,8 @@ public class AddStudentTestClass {
     }
 
 
-    @After
-    public void tearDown() {
-        new File(STUDENTS_FILE).delete();
-    }
+//    @After
+//    public void tearDown() {
+//        new File(STUDENTS_FILE).delete();
+//    }
 }
