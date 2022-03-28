@@ -14,7 +14,6 @@ import java.nio.file.Path;
 import java.util.Collections;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class AddStudentTestClass {
