@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import repository.StudentXMLRepository;
 import validation.StudentValidator;
+import validation.ValidationException;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,8 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class AddStudentTestClass {
 
@@ -33,23 +35,95 @@ public class AddStudentTestClass {
         studentXMLRepository = new StudentXMLRepository(new StudentValidator(), STUDENTS_FILE);
     }
 
-    @After
-    public void tearDown() {
-        new File(STUDENTS_FILE).delete();
-    }
 
     @Test
     public void save_returnsNull_whenSavingNewValidStudent() {
-        final Student student = new Student("2", "student name", 933);
+        final Student student = new Student("3", "Dora", 935);
         final Student savedStudent = studentXMLRepository.save(student);
         assertNull(savedStudent);
     }
 
     @Test
     public void save_returnsSavedStudent_whenSavingExistingStudent() {
-        final Student student = new Student("2", "student name", 933);
+        final Student student = new Student("3", "Dora", 935);
         studentXMLRepository.save(student);
         final Student savedStudent = studentXMLRepository.save(student);
         assertEquals(student, savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenIDIsNull() {
+        final Student student = new Student(null, "Dora", 935);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenIDIsEmpty() {
+        final Student student = new Student("", "Dora", 935);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenNumeIsNull() {
+        final Student student = new Student("1", null, 935);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenNumeIsEmpty() {
+        final Student student = new Student("1", "", 935);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenGrupaIsLessThanTheLeftBoundary() {
+        final Student student = new Student("1", "Dora", 109);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenGrupaIsTheLeftBoundary() {
+        final Student student = new Student("1", "Dora", 110);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenGrupaIsGreaterThanTheLeftBoundary() {
+        final Student student = new Student("1", "Dora", 111);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenGrupaIsLessThanTheRightBoundary() {
+        final Student student = new Student("1", "Dora", 937);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenGrupaIsTheRightBoundary() {
+        final Student student = new Student("1", "Dora", 938);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+    @Test
+    public void save_returnsNull_whenGrupaIsGreaterThanTheRightBoundary() {
+        final Student student = new Student("1", "Dora", 939);
+        final Student savedStudent = studentXMLRepository.save(student);
+        assertNull(savedStudent);
+    }
+
+
+    @After
+    public void tearDown() {
+        new File(STUDENTS_FILE).delete();
     }
 }
