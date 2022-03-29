@@ -54,42 +54,42 @@ public class AddStudentTestClass {
     public void save_returnsNull_whenIDIsNull() {
         final Student student = new Student(null, "Dora", 935);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
     @Test
     public void save_returnsNull_whenIDIsEmpty() {
         final Student student = new Student("", "Dora", 935);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
     @Test
     public void save_returnsNull_whenNumeIsNull() {
         final Student student = new Student("1", null, 935);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
     @Test
     public void save_returnsNull_whenNumeIsEmpty() {
         final Student student = new Student("1", "", 935);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
     @Test
     public void save_returnsNull_whenGrupaIsLessThanTheLeftBoundary() {
         final Student student = new Student("1", "Dora", 109);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
     @Test
     public void save_returnsNull_whenGrupaIsTheLeftBoundary() {
         final Student student = new Student("1", "Dora", 110);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
     @Test
@@ -110,14 +110,14 @@ public class AddStudentTestClass {
     public void save_returnsNull_whenGrupaIsTheRightBoundary() {
         final Student student = new Student("1", "Dora", 938);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
     @Test
     public void save_returnsNull_whenGrupaIsGreaterThanTheRightBoundary() {
         final Student student = new Student("1", "Dora", 939);
         final Student savedStudent = studentXMLRepository.save(student);
-        assertNull(savedStudent);
+        assertEquals(student, savedStudent);
     }
 
 
