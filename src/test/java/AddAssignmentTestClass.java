@@ -48,4 +48,60 @@ public class AddAssignmentTestClass {
         final Tema savedTema = temaXMLRepository.save(tema);
         assertEquals(tema, savedTema);
     }
+
+    @Test
+    public void save_returnsEntity_whenIDIsNull() {
+        final Tema tema = new Tema(null, "desc2", 3, 2);
+        temaXMLRepository.save(tema);
+        final Tema savedTema = temaXMLRepository.save(tema);
+        assertEquals(tema, savedTema);
+    }
+
+    @Test
+    public void save_returnsEntity_whenIDIsEmpty() {
+        final Tema tema = new Tema("", "desc2", 3, 2);
+        temaXMLRepository.save(tema);
+        final Tema savedTema = temaXMLRepository.save(tema);
+        assertEquals(tema, savedTema);
+    }
+
+    @Test
+    public void save_returnsEntity_whenDescriereIsNull() {
+        final Tema tema = new Tema("2", null, 3, 2);
+        temaXMLRepository.save(tema);
+        final Tema savedTema = temaXMLRepository.save(tema);
+        assertEquals(tema, savedTema);
+    }
+
+    @Test
+    public void save_returnsEntity_whenDescriereIsEmpty() {
+        final Tema tema = new Tema("2", "", 3, 2);
+        temaXMLRepository.save(tema);
+        final Tema savedTema = temaXMLRepository.save(tema);
+        assertEquals(tema, savedTema);
+    }
+
+    @Test
+    public void save_returnsEntity_whenDeadlineIsInvalid() {
+        final Tema tema = new Tema("2", "desc", 0, 2);
+        temaXMLRepository.save(tema);
+        final Tema savedTema = temaXMLRepository.save(tema);
+        assertEquals(tema, savedTema);
+    }
+
+    @Test
+    public void save_returnsEntity_whenStartlineIsInvalid() {
+        final Tema tema = new Tema("2", "desc", 2, 16);
+        temaXMLRepository.save(tema);
+        final Tema savedTema = temaXMLRepository.save(tema);
+        assertEquals(tema, savedTema);
+    }
+
+    @Test
+    public void save_returnsEntity_whenStartlineAfterDeadline() {
+        final Tema tema = new Tema("2", "desc", 2, 4);
+        temaXMLRepository.save(tema);
+        final Tema savedTema = temaXMLRepository.save(tema);
+        assertEquals(tema, savedTema);
+    }
 }
