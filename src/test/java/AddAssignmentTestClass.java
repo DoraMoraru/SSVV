@@ -91,7 +91,7 @@ public class AddAssignmentTestClass {
 
     @Test
     public void save_returnsEntity_whenStartlineIsInvalid() {
-        final Tema tema = new Tema("2", "desc", 2, 16);
+        final Tema tema = new Tema("2", "desc", 2, 0);
         temaXMLRepository.save(tema);
         final Tema savedTema = temaXMLRepository.save(tema);
         assertEquals(tema, savedTema);
