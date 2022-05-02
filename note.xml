@@ -20,6 +20,11 @@
         <SaptamanaPredare>9</SaptamanaPredare>
         <Feedback>done</Feedback>
     </nota>
+    <nota IDStudent="1" IDTema="3">
+        <Nota>7.5</Nota>
+        <SaptamanaPredare>10</SaptamanaPredare>
+        <Feedback>ok</Feedback>
+    </nota>
     <nota IDStudent="9" IDTema="1">
         <Nota>10.0</Nota>
         <SaptamanaPredare>7</SaptamanaPredare>
@@ -29,6 +34,11 @@
         <Nota>7.5</Nota>
         <SaptamanaPredare>9</SaptamanaPredare>
         <Feedback>s</Feedback>
+    </nota>
+    <nota IDStudent="9" IDTema="3">
+        <Nota>4.0</Nota>
+        <SaptamanaPredare>7</SaptamanaPredare>
+        <Feedback>okk</Feedback>
     </nota>
     <nota IDStudent="5" IDTema="1">
         <Nota>10.0</Nota>
