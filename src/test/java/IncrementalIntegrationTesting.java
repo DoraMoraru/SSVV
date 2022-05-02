@@ -51,17 +51,17 @@ public class IncrementalIntegrationTesting {
     }
 
     @Test
-    public void saveStudent() {
+    public void saveStudentFromIncremental() {
         Assert.assertEquals(1, service.saveStudent("studentId", "name", 933));
     }
 
     @Test
-    public void saveAssignment() {
+    public void saveAssignmentFromIncremental() {
         Assert.assertEquals(1, service.saveTema("assignmentId", "name", 10, 1));
     }
 
     @Test
-    public void saveGrade() {
+    public void saveGradeFromIncremental() {
         Assert.assertEquals(1, service.saveStudent("studentId", "name", 933));
         Assert.assertEquals(1, service.saveTema("assignmentId", "name", 9, 1));
         Assert.assertEquals(1, service.saveNota("studentId", "assignmentId", 10, 12, "feedback"));
